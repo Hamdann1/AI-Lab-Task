@@ -1,0 +1,169 @@
+{
+  "core_rows": [
+    {
+      "step": 1,
+      "category": "repeated percept",
+      "previous_mode": "None",
+      "temperature_c": 30.0,
+      "occupied": true,
+      "target": "COOL",
+      "stateful_command": "SEND",
+      "reflex_command": "SEND",
+      "expected_target": "COOL",
+      "expected_command": "SEND",
+      "match": true
+    },
+    {
+      "step": 2,
+      "category": "repeated percept",
+      "previous_mode": "COOL",
+      "temperature_c": 30.0,
+      "occupied": true,
+      "target": "COOL",
+      "stateful_command": "NO COMMAND",
+      "reflex_command": "SEND",
+      "expected_target": "COOL",
+      "expected_command": "NO COMMAND",
+      "match": true
+    },
+    {
+      "step": 3,
+      "category": "repeated percept",
+      "previous_mode": "COOL",
+      "temperature_c": 30.0,
+      "occupied": true,
+      "target": "COOL",
+      "stateful_command": "NO COMMAND",
+      "reflex_command": "SEND",
+      "expected_target": "COOL",
+      "expected_command": "NO COMMAND",
+      "match": true
+    },
+    {
+      "step": 4,
+      "category": "boundary 26.0",
+      "previous_mode": "COOL",
+      "temperature_c": 26.0,
+      "occupied": true,
+      "target": "IDLE",
+      "stateful_command": "SEND",
+      "reflex_command": "SEND",
+      "expected_target": "IDLE",
+      "expected_command": "SEND",
+      "match": true
+    },
+    {
+      "step": 5,
+      "category": "boundary 18.0",
+      "previous_mode": "IDLE",
+      "temperature_c": 18.0,
+      "occupied": true,
+      "target": "IDLE",
+      "stateful_command": "NO COMMAND",
+      "reflex_command": "SEND",
+      "expected_target": "IDLE",
+      "expected_command": "NO COMMAND",
+      "match": true
+    },
+    {
+      "step": 6,
+      "category": "mode transition",
+      "previous_mode": "IDLE",
+      "temperature_c": 17.9,
+      "occupied": true,
+      "target": "HEAT",
+      "stateful_command": "SEND",
+      "reflex_command": "SEND",
+      "expected_target": "HEAT",
+      "expected_command": "SEND",
+      "match": true
+    },
+    {
+      "step": 7,
+      "category": "mode transition",
+      "previous_mode": "HEAT",
+      "temperature_c": 27.0,
+      "occupied": true,
+      "target": "COOL",
+      "stateful_command": "SEND",
+      "reflex_command": "SEND",
+      "expected_target": "COOL",
+      "expected_command": "SEND",
+      "match": true
+    },
+    {
+      "step": 8,
+      "category": "empty room",
+      "previous_mode": "COOL",
+      "temperature_c": 27.0,
+      "occupied": false,
+      "target": "OFF",
+      "stateful_command": "SEND",
+      "reflex_command": "SEND",
+      "expected_target": "OFF",
+      "expected_command": "SEND",
+      "match": true
+    },
+    {
+      "step": 9,
+      "category": "empty room (repeat)",
+      "previous_mode": "OFF",
+      "temperature_c": 15.0,
+      "occupied": false,
+      "target": "OFF",
+      "stateful_command": "NO COMMAND",
+      "reflex_command": "SEND",
+      "expected_target": "OFF",
+      "expected_command": "NO COMMAND",
+      "match": true
+    },
+    {
+      "step": 10,
+      "category": "room re-occupied",
+      "previous_mode": "OFF",
+      "temperature_c": 22.0,
+      "occupied": true,
+      "target": "IDLE",
+      "stateful_command": "SEND",
+      "reflex_command": "SEND",
+      "expected_target": "IDLE",
+      "expected_command": "SEND",
+      "match": true
+    }
+  ],
+  "n": 10,
+  "reflex_commands": 10,
+  "stateful_commands": 6,
+  "edge_chatter_rows": [
+    {
+      "step": 1,
+      "previous_mode": "None",
+      "temperature_c": 26.1,
+      "target": "COOL",
+      "command": "SEND"
+    },
+    {
+      "step": 2,
+      "previous_mode": "COOL",
+      "temperature_c": 25.9,
+      "target": "IDLE",
+      "command": "SEND"
+    },
+    {
+      "step": 3,
+      "previous_mode": "IDLE",
+      "temperature_c": 26.1,
+      "target": "COOL",
+      "command": "SEND"
+    },
+    {
+      "step": 4,
+      "previous_mode": "COOL",
+      "temperature_c": 25.9,
+      "target": "IDLE",
+      "command": "SEND"
+    }
+  ],
+  "edge_chatter_commands": 4,
+  "all_match": true
+}

@@ -1,0 +1,21 @@
+{
+  "note": "Synthetic inputs. Expected values were derived by hand from the rules (COOL if >26.0, HEAT if <18.0, empty room -> OFF) before running any code.",
+  "core_sequence": [
+    {"category": "repeated percept",   "temperature_c": 30.0, "occupied": true,  "expected_target": "COOL", "expected_send": true},
+    {"category": "repeated percept",   "temperature_c": 30.0, "occupied": true,  "expected_target": "COOL", "expected_send": false},
+    {"category": "repeated percept",   "temperature_c": 30.0, "occupied": true,  "expected_target": "COOL", "expected_send": false},
+    {"category": "boundary 26.0",      "temperature_c": 26.0, "occupied": true,  "expected_target": "IDLE", "expected_send": true},
+    {"category": "boundary 18.0",      "temperature_c": 18.0, "occupied": true,  "expected_target": "IDLE", "expected_send": false},
+    {"category": "mode transition",    "temperature_c": 17.9, "occupied": true,  "expected_target": "HEAT", "expected_send": true},
+    {"category": "mode transition",    "temperature_c": 27.0, "occupied": true,  "expected_target": "COOL", "expected_send": true},
+    {"category": "empty room",         "temperature_c": 27.0, "occupied": false, "expected_target": "OFF",  "expected_send": true},
+    {"category": "empty room (repeat)","temperature_c": 15.0, "occupied": false, "expected_target": "OFF",  "expected_send": false},
+    {"category": "room re-occupied",   "temperature_c": 22.0, "occupied": true,  "expected_target": "IDLE", "expected_send": true}
+  ],
+  "edge_chatter": [
+    {"temperature_c": 26.1, "occupied": true},
+    {"temperature_c": 25.9, "occupied": true},
+    {"temperature_c": 26.1, "occupied": true},
+    {"temperature_c": 25.9, "occupied": true}
+  ]
+}

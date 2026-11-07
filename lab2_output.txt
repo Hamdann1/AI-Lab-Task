@@ -1,0 +1,31 @@
+Lab 2 check - thresholds: COOL if > 26.0, HEAT if < 18.0, empty room -> OFF (synthetic assumptions)
+
+CORE SEQUENCE (one continuous run, previous mode starts as None)
+ # category             previous  percept              target  outcome     check
+--------------------------------------------------------------------------------
+ 1 repeated percept     None      30.0 C, occupied     COOL    SEND        match
+ 2 repeated percept     COOL      30.0 C, occupied     COOL    NO COMMAND  match
+ 3 repeated percept     COOL      30.0 C, occupied     COOL    NO COMMAND  match
+ 4 boundary 26.0        COOL      26.0 C, occupied     IDLE    SEND        match
+ 5 boundary 18.0        IDLE      18.0 C, occupied     IDLE    NO COMMAND  match
+ 6 mode transition      IDLE      17.9 C, occupied     HEAT    SEND        match
+ 7 mode transition      HEAT      27.0 C, occupied     COOL    SEND        match
+ 8 empty room           COOL      27.0 C, empty        OFF     SEND        match
+ 9 empty room (repeat)  OFF       15.0 C, empty        OFF     NO COMMAND  match
+10 room re-occupied     OFF       22.0 C, occupied     IDLE    SEND        match
+
+Reflex agent commands:   10 of 10 percepts
+Stateful agent commands: 6 of 10 percepts
+Redundant commands avoided: 4
+
+EDGE CASE: temperature oscillating around the 26.0 threshold (fresh agent)
+ 1 previous=None  percept=26.1 C, occupied   target=COOL  SEND
+ 2 previous=COOL  percept=25.9 C, occupied   target=IDLE  SEND
+ 3 previous=IDLE  percept=26.1 C, occupied   target=COOL  SEND
+ 4 previous=COOL  percept=25.9 C, occupied   target=IDLE  SEND
+commands sent: 4 of 4 percepts (memory did not reduce them)
+
+INVALID INPUT CHECK
+NaN temperature rejected: temperature_c must not be NaN
+
+RESULT: all expectations matched

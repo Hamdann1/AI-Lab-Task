@@ -1,0 +1,11 @@
+step,category,previous_mode,temperature_c,occupied,target,stateful_command,reflex_command,expected_target,expected_command,match
+1,repeated percept,None,30.0,True,COOL,SEND,SEND,COOL,SEND,True
+2,repeated percept,COOL,30.0,True,COOL,NO COMMAND,SEND,COOL,NO COMMAND,True
+3,repeated percept,COOL,30.0,True,COOL,NO COMMAND,SEND,COOL,NO COMMAND,True
+4,boundary 26.0,COOL,26.0,True,IDLE,SEND,SEND,IDLE,SEND,True
+5,boundary 18.0,IDLE,18.0,True,IDLE,NO COMMAND,SEND,IDLE,NO COMMAND,True
+6,mode transition,IDLE,17.9,True,HEAT,SEND,SEND,HEAT,SEND,True
+7,mode transition,HEAT,27.0,True,COOL,SEND,SEND,COOL,SEND,True
+8,empty room,COOL,27.0,False,OFF,SEND,SEND,OFF,SEND,True
+9,empty room (repeat),OFF,15.0,False,OFF,NO COMMAND,SEND,OFF,NO COMMAND,True
+10,room re-occupied,OFF,22.0,True,IDLE,SEND,SEND,IDLE,SEND,True
