@@ -1,0 +1,714 @@
+{
+  "bfs": {
+    "status": "FOUND",
+    "path": "A-B-D-G",
+    "visit_order": [
+      "A",
+      "B",
+      "C",
+      "E",
+      "D",
+      "F",
+      "G"
+    ],
+    "trace": [
+      {
+        "step": 1,
+        "before": [
+          "A"
+        ],
+        "processed": "A",
+        "path": "A",
+        "goal": false,
+        "added": [
+          "B",
+          "C"
+        ],
+        "after": [
+          "A-B",
+          "A-C"
+        ]
+      },
+      {
+        "step": 2,
+        "before": [
+          "A-B",
+          "A-C"
+        ],
+        "processed": "B",
+        "path": "A-B",
+        "goal": false,
+        "added": [
+          "E",
+          "D"
+        ],
+        "after": [
+          "A-C",
+          "A-B-E",
+          "A-B-D"
+        ]
+      },
+      {
+        "step": 3,
+        "before": [
+          "A-C",
+          "A-B-E",
+          "A-B-D"
+        ],
+        "processed": "C",
+        "path": "A-C",
+        "goal": false,
+        "added": [
+          "F"
+        ],
+        "after": [
+          "A-B-E",
+          "A-B-D",
+          "A-C-F"
+        ]
+      },
+      {
+        "step": 4,
+        "before": [
+          "A-B-E",
+          "A-B-D",
+          "A-C-F"
+        ],
+        "processed": "E",
+        "path": "A-B-E",
+        "goal": false,
+        "added": [],
+        "after": [
+          "A-B-D",
+          "A-C-F"
+        ]
+      },
+      {
+        "step": 5,
+        "before": [
+          "A-B-D",
+          "A-C-F"
+        ],
+        "processed": "D",
+        "path": "A-B-D",
+        "goal": false,
+        "added": [
+          "G"
+        ],
+        "after": [
+          "A-C-F",
+          "A-B-D-G"
+        ]
+      },
+      {
+        "step": 6,
+        "before": [
+          "A-C-F",
+          "A-B-D-G"
+        ],
+        "processed": "F",
+        "path": "A-C-F",
+        "goal": false,
+        "added": [],
+        "after": [
+          "A-B-D-G"
+        ]
+      },
+      {
+        "step": 7,
+        "before": [
+          "A-B-D-G"
+        ],
+        "processed": "G",
+        "path": "A-B-D-G",
+        "goal": true,
+        "added": [],
+        "after": []
+      }
+    ]
+  },
+  "dfs": {
+    "status": "FOUND",
+    "path": "A-B-E-F-G",
+    "visit_order": [
+      "A",
+      "B",
+      "E",
+      "F",
+      "C",
+      "G"
+    ],
+    "trace": [
+      {
+        "step": 1,
+        "before": [
+          "A"
+        ],
+        "processed": "A",
+        "path": "A",
+        "goal": false,
+        "added": [
+          "B",
+          "C"
+        ],
+        "after": [
+          "A-C",
+          "A-B"
+        ]
+      },
+      {
+        "step": 2,
+        "before": [
+          "A-C",
+          "A-B"
+        ],
+        "processed": "B",
+        "path": "A-B",
+        "goal": false,
+        "added": [
+          "E",
+          "D"
+        ],
+        "after": [
+          "A-C",
+          "A-B-D",
+          "A-B-E"
+        ]
+      },
+      {
+        "step": 3,
+        "before": [
+          "A-C",
+          "A-B-D",
+          "A-B-E"
+        ],
+        "processed": "E",
+        "path": "A-B-E",
+        "goal": false,
+        "added": [
+          "F"
+        ],
+        "after": [
+          "A-C",
+          "A-B-D",
+          "A-B-E-F"
+        ]
+      },
+      {
+        "step": 4,
+        "before": [
+          "A-C",
+          "A-B-D",
+          "A-B-E-F"
+        ],
+        "processed": "F",
+        "path": "A-B-E-F",
+        "goal": false,
+        "added": [
+          "C",
+          "G"
+        ],
+        "after": [
+          "A-C",
+          "A-B-D",
+          "A-B-E-F-G",
+          "A-B-E-F-C"
+        ]
+      },
+      {
+        "step": 5,
+        "before": [
+          "A-C",
+          "A-B-D",
+          "A-B-E-F-G",
+          "A-B-E-F-C"
+        ],
+        "processed": "C",
+        "path": "A-B-E-F-C",
+        "goal": false,
+        "added": [],
+        "after": [
+          "A-C",
+          "A-B-D",
+          "A-B-E-F-G"
+        ]
+      },
+      {
+        "step": 6,
+        "before": [
+          "A-C",
+          "A-B-D",
+          "A-B-E-F-G"
+        ],
+        "processed": "G",
+        "path": "A-B-E-F-G",
+        "goal": true,
+        "added": [],
+        "after": [
+          "A-C",
+          "A-B-D"
+        ]
+      }
+    ]
+  },
+  "hop_distance_goal": 3,
+  "dls": [
+    {
+      "limit": 1,
+      "status": "CUTOFF",
+      "path": null,
+      "nodes": 3,
+      "visited": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "limit": 2,
+      "status": "CUTOFF",
+      "path": null,
+      "nodes": 6,
+      "visited": [
+        "A",
+        "B",
+        "E",
+        "D",
+        "C",
+        "F"
+      ]
+    },
+    {
+      "limit": 3,
+      "status": "FOUND",
+      "path": "A-B-D-G",
+      "nodes": 6,
+      "visited": [
+        "A",
+        "B",
+        "E",
+        "F",
+        "D",
+        "G"
+      ]
+    },
+    {
+      "limit": 4,
+      "status": "FOUND",
+      "path": "A-B-E-F-G",
+      "nodes": 6,
+      "visited": [
+        "A",
+        "B",
+        "E",
+        "F",
+        "C",
+        "G"
+      ]
+    }
+  ],
+  "iddfs": [
+    {
+      "max_depth": 1,
+      "status": "CUTOFF",
+      "path": null,
+      "limits_attempted": [
+        0,
+        1
+      ],
+      "iterations": [
+        {
+          "limit": 0,
+          "status": "CUTOFF",
+          "nodes": 1
+        },
+        {
+          "limit": 1,
+          "status": "CUTOFF",
+          "nodes": 3
+        }
+      ],
+      "total_nodes": 4,
+      "node_visits": {
+        "A": 2,
+        "B": 1,
+        "C": 1
+      }
+    },
+    {
+      "max_depth": 2,
+      "status": "CUTOFF",
+      "path": null,
+      "limits_attempted": [
+        0,
+        1,
+        2
+      ],
+      "iterations": [
+        {
+          "limit": 0,
+          "status": "CUTOFF",
+          "nodes": 1
+        },
+        {
+          "limit": 1,
+          "status": "CUTOFF",
+          "nodes": 3
+        },
+        {
+          "limit": 2,
+          "status": "CUTOFF",
+          "nodes": 6
+        }
+      ],
+      "total_nodes": 10,
+      "node_visits": {
+        "A": 3,
+        "B": 2,
+        "C": 2,
+        "E": 1,
+        "D": 1,
+        "F": 1
+      }
+    },
+    {
+      "max_depth": 3,
+      "status": "FOUND",
+      "path": "A-B-D-G",
+      "limits_attempted": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "iterations": [
+        {
+          "limit": 0,
+          "status": "CUTOFF",
+          "nodes": 1
+        },
+        {
+          "limit": 1,
+          "status": "CUTOFF",
+          "nodes": 3
+        },
+        {
+          "limit": 2,
+          "status": "CUTOFF",
+          "nodes": 6
+        },
+        {
+          "limit": 3,
+          "status": "FOUND",
+          "nodes": 6
+        }
+      ],
+      "total_nodes": 16,
+      "node_visits": {
+        "A": 4,
+        "B": 3,
+        "C": 2,
+        "E": 2,
+        "D": 2,
+        "F": 2,
+        "G": 1
+      }
+    },
+    {
+      "max_depth": 4,
+      "status": "FOUND",
+      "path": "A-B-D-G",
+      "limits_attempted": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "iterations": [
+        {
+          "limit": 0,
+          "status": "CUTOFF",
+          "nodes": 1
+        },
+        {
+          "limit": 1,
+          "status": "CUTOFF",
+          "nodes": 3
+        },
+        {
+          "limit": 2,
+          "status": "CUTOFF",
+          "nodes": 6
+        },
+        {
+          "limit": 3,
+          "status": "FOUND",
+          "nodes": 6
+        }
+      ],
+      "total_nodes": 16,
+      "node_visits": {
+        "A": 4,
+        "B": 3,
+        "C": 2,
+        "E": 2,
+        "D": 2,
+        "F": 2,
+        "G": 1
+      }
+    }
+  ],
+  "failure_demo": {
+    "limit": 10,
+    "goal": "H",
+    "status": "FAILURE",
+    "nodes": 22
+  },
+  "ucs": {
+    "status": "FOUND",
+    "path": "A-B-E-F-G",
+    "cost": 4,
+    "order": [
+      [
+        "A",
+        0
+      ],
+      [
+        "B",
+        1
+      ],
+      [
+        "E",
+        2
+      ],
+      [
+        "F",
+        3
+      ],
+      [
+        "G",
+        4
+      ]
+    ],
+    "trace": [
+      {
+        "step": 1,
+        "processed": "A",
+        "cost": 0,
+        "path": "A",
+        "goal": false,
+        "added": [
+          "B(1)",
+          "C(5)"
+        ],
+        "after": [
+          [
+            1,
+            "A-B"
+          ],
+          [
+            5,
+            "A-C"
+          ]
+        ]
+      },
+      {
+        "step": 2,
+        "processed": "B",
+        "cost": 1,
+        "path": "A-B",
+        "goal": false,
+        "added": [
+          "E(2)",
+          "D(7)"
+        ],
+        "after": [
+          [
+            2,
+            "A-B-E"
+          ],
+          [
+            5,
+            "A-C"
+          ],
+          [
+            7,
+            "A-B-D"
+          ]
+        ]
+      },
+      {
+        "step": 3,
+        "processed": "E",
+        "cost": 2,
+        "path": "A-B-E",
+        "goal": false,
+        "added": [
+          "F(3)"
+        ],
+        "after": [
+          [
+            3,
+            "A-B-E-F"
+          ],
+          [
+            5,
+            "A-C"
+          ],
+          [
+            7,
+            "A-B-D"
+          ]
+        ]
+      },
+      {
+        "step": 4,
+        "processed": "F",
+        "cost": 3,
+        "path": "A-B-E-F",
+        "goal": false,
+        "added": [
+          "G(4)"
+        ],
+        "after": [
+          [
+            4,
+            "A-B-E-F-G"
+          ],
+          [
+            5,
+            "A-C"
+          ],
+          [
+            7,
+            "A-B-D"
+          ]
+        ]
+      },
+      {
+        "step": 5,
+        "processed": "G",
+        "cost": 4,
+        "path": "A-B-E-F-G",
+        "goal": true,
+        "added": [],
+        "after": [
+          [
+            5,
+            "A-C"
+          ],
+          [
+            7,
+            "A-B-D"
+          ]
+        ]
+      }
+    ],
+    "independent_cost": 4
+  },
+  "simple_paths": [
+    {
+      "path": "A-B-E-F-G",
+      "hops": 4,
+      "cost": 4
+    },
+    {
+      "path": "A-B-D-G",
+      "hops": 3,
+      "cost": 11
+    },
+    {
+      "path": "A-C-F-E-B-D-G",
+      "hops": 6,
+      "cost": 19
+    },
+    {
+      "path": "A-C-F-G",
+      "hops": 3,
+      "cost": 8
+    }
+  ],
+  "bfs_weighted": {
+    "path": "A-B-D-G",
+    "hops": 3,
+    "cost": 11
+  },
+  "negative_weight_guard": true,
+  "all_match": true,
+  "graph": {
+    "successors": {
+      "A": [
+        "B",
+        "C"
+      ],
+      "B": [
+        "A",
+        "E",
+        "D"
+      ],
+      "C": [
+        "A",
+        "F"
+      ],
+      "D": [
+        "B",
+        "G"
+      ],
+      "E": [
+        "B",
+        "F"
+      ],
+      "F": [
+        "C",
+        "E",
+        "G"
+      ],
+      "G": [
+        "D",
+        "F"
+      ]
+    },
+    "weights": [
+      [
+        "A",
+        "B",
+        1
+      ],
+      [
+        "A",
+        "C",
+        5
+      ],
+      [
+        "B",
+        "D",
+        6
+      ],
+      [
+        "B",
+        "E",
+        1
+      ],
+      [
+        "C",
+        "F",
+        2
+      ],
+      [
+        "D",
+        "G",
+        4
+      ],
+      [
+        "E",
+        "F",
+        1
+      ],
+      [
+        "F",
+        "G",
+        1
+      ]
+    ]
+  }
+}

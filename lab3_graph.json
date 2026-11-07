@@ -1,0 +1,25 @@
+{
+  "note": "STAND-IN GRAPH. The lab's Section 3.2 graph, successor order, supplied BFS/DFS code and Section 3.7 weights were not available, so this A-G graph was designed to match the lab's hints (goal G first reachable at depth 3, cycles present, a shorter-hop route that costs more). Replace this file to use the real graph; the hand-derived expectations in lab3_check.py would then need re-deriving.",
+  "start": "A",
+  "goal": "G",
+  "successors": {
+    "A": ["B", "C"],
+    "B": ["A", "E", "D"],
+    "C": ["A", "F"],
+    "D": ["B", "G"],
+    "E": ["B", "F"],
+    "F": ["C", "E", "G"],
+    "G": ["D", "F"]
+  },
+  "weights": [
+    ["A", "B", 1],
+    ["A", "C", 5],
+    ["B", "D", 6],
+    ["B", "E", 1],
+    ["C", "F", 2],
+    ["D", "G", 4],
+    ["E", "F", 1],
+    ["F", "G", 1]
+  ],
+  "added_corridors": []
+}

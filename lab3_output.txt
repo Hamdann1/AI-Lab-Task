@@ -1,0 +1,54 @@
+Lab 3 check (STAND-IN A-G graph; start A, goal G; root at depth 0)
+Successor order: A: B,C; B: A,E,D; C: A,F; D: B,G; E: B,F; F: C,E,G; G: D,F
+
+TASK 1 - BFS (queue = paths, front first)
+  step 1: queue ['A'] | process A | add ['B', 'C'] | queue after ['A-B', 'A-C']
+  step 2: queue ['A-B', 'A-C'] | process B | add ['E', 'D'] | queue after ['A-C', 'A-B-E', 'A-B-D']
+  step 3: queue ['A-C', 'A-B-E', 'A-B-D'] | process C | add ['F'] | queue after ['A-B-E', 'A-B-D', 'A-C-F']
+  step 4: queue ['A-B-E', 'A-B-D', 'A-C-F'] | process E | add [] | queue after ['A-B-D', 'A-C-F']
+  step 5: queue ['A-B-D', 'A-C-F'] | process D | add ['G'] | queue after ['A-C-F', 'A-B-D-G']
+  step 6: queue ['A-C-F', 'A-B-D-G'] | process F | add [] | queue after ['A-B-D-G']
+  step 7: queue ['A-B-D-G'] | process G | add [] | queue after []  <- GOAL, stop
+  Final path: A-B-D-G    Visit (processing) order: A B C E D F G
+
+TASK 1 - DFS (stack shown bottom -> top; top is processed next)
+  step 1: stack ['A'] | process A | push ['B', 'C'] | stack after ['A-C', 'A-B']
+  step 2: stack ['A-C', 'A-B'] | process B | push ['E', 'D'] | stack after ['A-C', 'A-B-D', 'A-B-E']
+  step 3: stack ['A-C', 'A-B-D', 'A-B-E'] | process E | push ['F'] | stack after ['A-C', 'A-B-D', 'A-B-E-F']
+  step 4: stack ['A-C', 'A-B-D', 'A-B-E-F'] | process F | push ['C', 'G'] | stack after ['A-C', 'A-B-D', 'A-B-E-F-G', 'A-B-E-F-C']
+  step 5: stack ['A-C', 'A-B-D', 'A-B-E-F-G', 'A-B-E-F-C'] | process C | push [] | stack after ['A-C', 'A-B-D', 'A-B-E-F-G']
+  step 6: stack ['A-C', 'A-B-D', 'A-B-E-F-G'] | process G | push [] | stack after ['A-C', 'A-B-D']  <- GOAL, stop
+  Final path: A-B-E-F-G    Visit (processing) order: A B E F C G
+
+TASK 2 - shortest hop distance A->G (independent BFS distances): 3
+DLS at limits 1-4
+  limit 1: status=CUTOFF  path=None  nodes visited=3  call order=A B C
+  limit 2: status=CUTOFF  path=None  nodes visited=6  call order=A B E D C F
+  limit 3: status=FOUND   path=A-B-D-G  nodes visited=6  call order=A B E F D G
+  limit 4: status=FOUND   path=A-B-E-F-G  nodes visited=6  call order=A B E F C G
+IDDFS with maximum depths 1-4 (limits start at 0)
+  max depth 1: status=CUTOFF  path=None  limits attempted=[0, 1]  total nodes=4  [L0:CUTOFF(1), L1:CUTOFF(3)]
+  max depth 2: status=CUTOFF  path=None  limits attempted=[0, 1, 2]  total nodes=10  [L0:CUTOFF(1), L1:CUTOFF(3), L2:CUTOFF(6)]
+  max depth 3: status=FOUND   path=A-B-D-G  limits attempted=[0, 1, 2, 3]  total nodes=16  [L0:CUTOFF(1), L1:CUTOFF(3), L2:CUTOFF(6), L3:FOUND(6)]
+  max depth 4: status=FOUND   path=A-B-D-G  limits attempted=[0, 1, 2, 3]  total nodes=16  [L0:CUTOFF(1), L1:CUTOFF(3), L2:CUTOFF(6), L3:FOUND(6)]
+  Per-node visits across IDDFS iterations (max depth 3): {'A': 4, 'B': 3, 'C': 2, 'E': 2, 'D': 2, 'F': 2, 'G': 1}
+  FAILURE demo: DLS limit 10, goal 'H' (not in graph): status=FAILURE, nodes visited=22
+
+TASK 3 - weights: A-B=1, A-C=5, B-D=6, B-E=1, C-F=2, D-G=4, E-F=1, F-G=1
+  added corridors: none (weights only; topology unchanged)
+UCS processing order (node, cost g):
+  step 1: process A (g=0) path A | add ['B(1)', 'C(5)'] | frontier after [(1, 'A-B'), (5, 'A-C')]
+  step 2: process B (g=1) path A-B | add ['E(2)', 'D(7)'] | frontier after [(2, 'A-B-E'), (5, 'A-C'), (7, 'A-B-D')]
+  step 3: process E (g=2) path A-B-E | add ['F(3)'] | frontier after [(3, 'A-B-E-F'), (5, 'A-C'), (7, 'A-B-D')]
+  step 4: process F (g=3) path A-B-E-F | add ['G(4)'] | frontier after [(4, 'A-B-E-F-G'), (5, 'A-C'), (7, 'A-B-D')]
+  step 5: process G (g=4) path A-B-E-F-G | add [] | frontier after [(5, 'A-C'), (7, 'A-B-D')]  <- GOAL, stop
+  UCS path A-B-E-F-G: returned cost=4, independent edge-weight sum=4
+  All simple A->G paths:
+    A-B-E-F-G: 4 hops, cost 4
+    A-B-D-G: 3 hops, cost 11
+    A-C-F-E-B-D-G: 6 hops, cost 19
+    A-C-F-G: 3 hops, cost 8
+  BFS route on the same topology: A-B-D-G, 3 hops, weighted cost 11
+  Negative weight rejected: negative edge weight -1 on A-B; UCS is not valid
+
+RESULT: all checks matched the hand-derived expectations
